@@ -4,7 +4,7 @@ import { searchBooks } from '../services/googleBooksApi';
 const MAX_RESULTS = 12;
 
 /**
- * Custom hook that encapsulates all book-search state and logic.
+ * Hook personalizado que encapsula todo o estado e lógica de busca de livros.
  */
 export function useBooks() {
   const [books, setBooks] = useState([]);
@@ -15,11 +15,11 @@ export function useBooks() {
   const [lastQuery, setLastQuery] = useState('');
   const [lastType, setLastType] = useState('general');
 
-  // Abort controller ref to cancel in-flight requests
+  // Ref do AbortController para cancelar requisições em andamento
   const abortRef = useRef(null);
 
   const search = useCallback(async (query, type = 'general', page = 0) => {
-    // Cancel any previous request
+    // Cancela qualquer requisição anterior
     if (abortRef.current) {
       abortRef.current.abort();
     }

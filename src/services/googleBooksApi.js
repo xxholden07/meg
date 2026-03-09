@@ -2,10 +2,10 @@ const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY || '';
 
 /**
- * Build query string for Google Books API search.
- * @param {string} query - Raw search text
- * @param {'title'|'author'|'general'} type - Search type
- * @returns {string} Formatted query string
+ * Monta a query string para busca na Google Books API.
+ * @param {string} query - Texto de busca
+ * @param {'title'|'author'|'general'} type - Tipo de busca
+ * @returns {string} Query formatada
  */
 function buildQuery(query, type) {
   const trimmed = query.trim();
@@ -15,11 +15,12 @@ function buildQuery(query, type) {
 }
 
 /**
- * Search for books using the Google Books API.
- * @param {string} query - Search term
- * @param {'title'|'author'|'general'} type - Search type
- * @param {number} startIndex - Pagination start index (default 0)
- * @param {number} maxResults - Max results per page (default 12)
+ * Busca livros na Google Books API.
+ * @param {string} query - Termo de busca
+ * @param {'title'|'author'|'general'} type - Tipo de busca
+ * @param {number} startIndex - Índice inicial para paginação (padrão 0)
+ * @param {number} maxResults - Máximo de resultados por página (padrão 12)
+ * @param {AbortSignal} signal - Sinal para cancelamento da requisição
  * @returns {Promise<{books: Array, totalItems: number}>}
  */
 export async function searchBooks(query, type = 'general', startIndex = 0, maxResults = 12, signal) {
@@ -55,9 +56,9 @@ export async function searchBooks(query, type = 'general', startIndex = 0, maxRe
 }
 
 /**
- * Fetch a single book by its Google Books volume ID.
- * @param {string} id - Volume ID
- * @returns {Promise<Object>} Normalized book object
+ * Busca um livro específico pelo ID de volume da Google Books.
+ * @param {string} id - ID do volume
+ * @returns {Promise<Object>} Objeto do livro normalizado
  */
 export async function getBookById(id) {
   const params = new URLSearchParams();
@@ -75,9 +76,9 @@ export async function getBookById(id) {
 }
 
 /**
- * Normalize a raw Google Books API volume into a consistent shape.
- * @param {Object} item - Raw API volume item
- * @returns {Object} Normalized book
+ * Normaliza um volume da API do Google Books para um formato consistente.
+ * @param {Object} item - Item bruto da API
+ * @returns {Object} Livro normalizado
  */
 function normalizeBook(item) {
   const info = item.volumeInfo || {};
