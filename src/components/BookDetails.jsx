@@ -3,17 +3,17 @@ import styles from './BookDetails.module.css';
 import placeholderImg from '../assets/book-placeholder.svg';
 
 /**
- * BookDetails modal showing full info for a selected book.
+ * Modal BookDetails exibindo informações completas de um livro selecionado.
  *
  * @param {Object}   props
- * @param {Object}   props.book     - Normalized book object
- * @param {Function} props.onClose  - Close handler
+ * @param {Object}   props.book    - Objeto do livro normalizado
+ * @param {Function} props.onClose - Callback para fechar o modal
  */
 export default function BookDetails({ book, onClose }) {
   const dialogRef = useRef(null);
   const closeBtnRef = useRef(null);
 
-  // Open native dialog on mount; trap focus
+  // Abre o dialog nativo ao montar; foca no botão de fechar
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -28,7 +28,7 @@ export default function BookDetails({ book, onClose }) {
     return () => dialog.removeEventListener('click', handleBackdropClick);
   }, [onClose]);
 
-  // Close on Escape
+  // Fecha ao pressionar Escape
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === 'Escape') onClose();

@@ -2,15 +2,15 @@ import BookCard from './BookCard';
 import styles from './BookList.module.css';
 
 /**
- * BookList renders a responsive grid of BookCard components.
+ * BookList renderiza uma grade responsiva de componentes BookCard.
  *
  * @param {Object}   props
- * @param {Array}    props.books      - Array of normalized book objects
- * @param {Function} props.onSelect   - Called with a book when a card is clicked
- * @param {boolean}  props.loading    - Show skeleton placeholders while loading first page
- * @param {boolean}  props.hasMore    - Whether more pages are available
- * @param {Function} props.onLoadMore - Callback to load the next page
- * @param {boolean}  props.loadingMore- True while loading an additional page
+ * @param {Array}    props.books       - Array de objetos de livros normalizados
+ * @param {Function} props.onSelect    - Chamado com um livro quando o card é clicado
+ * @param {boolean}  props.loading     - Mostra placeholders skeleton durante o carregamento da primeira página
+ * @param {boolean}  props.hasMore     - Indica se há mais páginas disponíveis
+ * @param {Function} props.onLoadMore  - Callback para carregar a próxima página
+ * @param {boolean}  props.loadingMore - Verdadeiro enquanto carrega uma página adicional
  */
 export default function BookList({ books, onSelect, loading, hasMore, onLoadMore, loadingMore }) {
   if (loading && books.length === 0) {

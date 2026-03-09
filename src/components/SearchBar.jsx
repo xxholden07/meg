@@ -8,11 +8,11 @@ const SEARCH_TYPES = [
 ];
 
 /**
- * SearchBar component with query input, search-type selector, and submit button.
+ * Componente SearchBar com input de busca, seletor de tipo e botão de envio.
  *
  * @param {Object}   props
- * @param {Function} props.onSearch - Callback(query, type) called on submit
- * @param {boolean}  props.loading  - Disables the button while loading
+ * @param {Function} props.onSearch - Callback(query, tipo) chamado ao submeter
+ * @param {boolean}  props.loading  - Desabilita o botão durante o carregamento
  */
 export default function SearchBar({ onSearch, loading = false }) {
   const [query, setQuery] = useState('');

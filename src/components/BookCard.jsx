@@ -2,11 +2,11 @@ import styles from './BookCard.module.css';
 import placeholderImg from '../assets/book-placeholder.svg';
 
 /**
- * BookCard displays a book's cover thumbnail, title and authors.
+ * BookCard exibe a capa, título e autores de um livro.
  *
  * @param {Object}   props
- * @param {Object}   props.book     - Normalized book object
- * @param {Function} props.onClick  - Called when the card is activated
+ * @param {Object}   props.book     - Objeto do livro normalizado
+ * @param {Function} props.onClick  - Chamado quando o card é ativado
  */
 export default function BookCard({ book, onClick }) {
   const authorText =
